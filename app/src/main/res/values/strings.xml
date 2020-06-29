@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">CalculadoraBasica</string>
+
+    <!--Strings used for calculator design-->
+    <string name="cero_text">0</string>
+    <string name="uno_text">1</string>
+    <string name="dos_text">2</string>
+    <string name="tres_text">3</string>
+    <string name="cuatro_text">4</string>
+    <string name="cinco_text">5</string>
+    <string name="seis_text">6</string>
+    <string name="siete_text">7</string>
+    <string name="ocho_text">8</string>
+    <string name="nueve_text">9</string>
+    <string name="decimal_text">.</string>
+    <string name="resta_text">-</string>
+    <string name="suma_text">+</string>
+    <string name="producto_text">x</string>
+    <string name="divicion_text">÷</string>
+    <string name="igual_text">=</string>
+    <string name="borrar_text">DEL</string>
+    <string name="borrar_todo_text">AC</string>
+</resources>
