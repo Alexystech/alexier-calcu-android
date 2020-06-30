@@ -175,7 +175,8 @@
                 android:layout_height="37dp"
                 android:layout_below="@+id/tres_button"
                 android:layout_toRightOf="@+id/cero_button"
-                android:text="@string/igual_text" />
+                android:text="@string/igual_text"
+                android:onClick="calcular"/>
 
             <Button
                 android:id="@+id/decimal_button"
