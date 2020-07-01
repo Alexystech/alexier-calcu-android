@@ -24,9 +24,7 @@ public class Utility {
      * y divisiones por ultimo sumas y restas)
      * */
     public double calcularOperacion(String cantidadCompleta) {
-        boolean esOperacionSencilla = true;
         double resultadoOperacion = 0;
-        double temporal = 0;
 
         List<String>tokens = tokensText(cantidadCompleta);
 
@@ -37,21 +35,47 @@ public class Utility {
                 resultadoOperacion = Double.parseDouble(tokens.get(0));
             }
         } else {
-            for (String token : tokens) {
-                if (token.equals(misOperadores.OPERADOR_PRODUCTO) ||
-                        token.equals(misOperadores.OPERADOR_DIVICION)) {
-                    esOperacionSencilla = false;
-                    break;
-                }
-            }
 
-            if (esOperacionSencilla) {
+            if (operacionSencilla(tokens)) {
                 resultadoOperacion = misOperacionesBasicas.operacionSencilla(tokens);
             } else {
-                resultadoOperacion = 000;
+                resultadoOperacion = misOperacionesBasicas.operacionJerarquica(tokens);
             }
         }
         return resultadoOperacion;
+    }
+
+    public boolean operacionSencilla(List<String>tokens) {
+        boolean primeraEvaluacionSencillas = false;
+        boolean primeraEvaluecionOperadores = false;
+
+        for (String token : tokens) {
+
+            if (primeraEvaluacionSencillas && primeraEvaluecionOperadores) {
+                break;
+            }
+
+            if (token.equals(misOperadores.OPERADOR_RESTA) ||
+                token.equals(misOperadores.OPERADOR_SUMA)) {
+                if (!primeraEvaluacionSencillas) {
+                    primeraEvaluacionSencillas = true;
+                }
+            }
+
+            if (token.equals(misOperadores.OPERADOR_DIVICION) ||
+                token.equals(misOperadores.OPERADOR_PRODUCTO)) {
+                if (!primeraEvaluecionOperadores) {
+                    primeraEvaluecionOperadores = true;
+                }
+            }
+
+        }
+
+        if (primeraEvaluacionSencillas && primeraEvaluecionOperadores) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public boolean instruccionCorrecta(String cantidadCompleta) {
